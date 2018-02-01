@@ -3,7 +3,7 @@ $(function(){
 
   var WorkoutLog = (function($, undefined){
       //private
-      var API_BASE = 'https://woserverapias.herokuapp.com/api';
+      var API_BASE = 'https://woserverapias.herokuapp.com/api'; 
       var userDefinitions = [];
 
       var setAuthHeader = function(sessionToken){
