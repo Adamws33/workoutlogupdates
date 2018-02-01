@@ -3,7 +3,7 @@ $(function(){
 
   var WorkoutLog = (function($, undefined){
       //private
-      var API_BASE = 'https://woserverapias.herokuapp.com/api';
+      var API_BASE = "http://localhost:3000/api/";
       var userDefinitions = [];
 
       var setAuthHeader = function(sessionToken){
@@ -109,13 +109,3 @@ $(function(){
 //   });
 // });
 
-  // var app = angular.module('WorkoutLog',[
-  //   'ui.router',
-  //   'workoutlog.define',
-  //   'worloutlog.log',
-  //   'workoutlog.history',
-  //   'workoutlog.feed',
-  //   'workoutlog.auth.signup',
-  //   'workoutlog.auth.signup'
-
-  // ])
