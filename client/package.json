@@ -1,0 +1,24 @@
+{
+  "name": "workoutlogclient",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./node_modules/http-server/bin/http-server",
+    "prestart": "npm install",
+    "postinstall": "bower install"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bower": "1.8.2",
+    "dotenv": "^5.0.0",
+    "http-server": "^0.11.1"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-uglify": "^2.0.1",
+    "http-server": "^0.11.1"
+  }
+}
