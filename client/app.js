@@ -109,13 +109,3 @@ $(function(){
 //   });
 // });
 
-  // var app = angular.module('WorkoutLog',[
-  //   'ui.router',
-  //   'workoutlog.define',
-  //   'worloutlog.log',
-  //   'workoutlog.history',
-  //   'workoutlog.feed',
-  //   'workoutlog.auth.signup',
-  //   'workoutlog.auth.signup'
-
-  // ])
