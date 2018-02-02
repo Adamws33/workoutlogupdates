@@ -4,6 +4,10 @@ $(function() {
 			workouts: [],
       
 			setDefinitions: function() {
+        var currentdate = new Date();
+        var starth = (currentdate.getHours() * 60);
+        var startm = currentdate.getMinutes();
+        console.log("start:",starth+startm)
         var defs = WorkoutLog.definition.userDefinitions;
         var len = defs.length;
         var opts;
@@ -13,8 +17,8 @@ $(function() {
         }
         $("#log-definition").children().remove();
         $("#log-definition").append(opts);
-        // $("#update-definition").children().remove();
-        // $("#update-definition").append(opts);
+        $("#update-definition").children().remove();
+        $("#update-definition").append(opts);
 			},
 			setHistory: function() {
         var history = WorkoutLog.log.workouts;
@@ -152,6 +156,7 @@ $(function() {
   $("#history-list").delegate('.remove', 'click', WorkoutLog.log.delete);
   $("#log-update").on("click", WorkoutLog.log.updateWorkout);
   $("#history-list").delegate('.update', 'click', WorkoutLog.log.getWorkout);
+
 
 
 	if (window.localStorage.getItem("sessionToken")){

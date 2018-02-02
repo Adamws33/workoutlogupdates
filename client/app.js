@@ -1,85 +1,92 @@
 // wait for Jquery to be ready
-$(function(){
+$(function () {
+  var WorkoutLog = (function ($, undefined) {
+    //private
+    var API_BASE = "http://localhost:3000/api/";
+    var userDefinitions = [];
 
-  var WorkoutLog = (function($, undefined){
-      //private
-      var API_BASE = "http://localhost:3000/api/"; 
-      var userDefinitions = [];
-
-      var setAuthHeader = function(sessionToken){
-        window.localStorage.setItem("sessionToken", sessionToken);
-        //set the authorization header
-        //This can be done on individual calls
-        //here we showcase ajaxSetup as a global tool
-        $.ajaxSetup({
-          "headers": {
-            "Authorization": sessionToken
-          }
-        });
-      };
-      //public
-      return{
-        API_BASE: API_BASE,
-        setAuthHeader: setAuthHeader
-      };
-  })
-  
-  (jQuery);
-
-    //iife immedietly invoked function expression
-
-    $('.nav-tabs a[data-toggle="tab"]').on("click", function(e) {
-      var token = window.localStorage.getItem("sessionToken");
-      if ($(this).hasClass("disabled") && !token) {
-         e.preventDefault();
-         return false;
-      }
-    });
-      // bind tab changes events
-      $('.nav-tabs a[data-toggle="tab"]').on("click", function(e) {
-        var target = $(e.target).attr("href"); //activated tab
-        if (target === '#log'){
-          WorkoutLog.log.setDefinitions();
-        }
-
-        if (target === '#history'){
-          WorkoutLog.log.setHistory();
+    var setAuthHeader = function (sessionToken) {
+      window.localStorage.setItem("sessionToken", sessionToken);
+      //set the authorization header
+      //This can be done on individual calls
+      //here we showcase ajaxSetup as a global tool
+      $.ajaxSetup({
+        "headers": {
+          "Authorization": sessionToken
         }
       });
-    $(document).on("keypress", function(e){
-      if(e.which ===13) { //enter key
-        if($("#signup-modal").is(':visible')){
-          $("#signup").trigger("click");
-        }
-        if ($("#login-modal").is(":visible")){
-          $("#login").trigger("click");
-        }
-      }
-    });
-    $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
-      var target = $(e.target).attr("href"); // activated tab
-      if (target === "#log") {
-        console.log(WorkoutLog)
-         WorkoutLog.log.setDefinitions();
-      }
+    };
+    //public
+    return {
+      API_BASE: API_BASE,
+      setAuthHeader: setAuthHeader
+    };
+  })
 
-      if (target === "#update-log") {
-        WorkoutLog.log.setDefinitions();
-        }
- 
-      if (target === "#history") {
-         WorkoutLog.log.setHistory();
-      }
-   });
+    (jQuery);
 
-    var token= window.localStorage.getItem("sessionToken");
-    if(token){
-      WorkoutLog.setAuthHeader(token);
+
+  //iife immedietly invoked function expression
+
+  $('.nav-tabs a[data-toggle="tab"]').on("click", function (e) {
+    var token = window.localStorage.getItem("sessionToken");
+    if ($(this).hasClass("disabled") && !token) {
+      e.preventDefault();
+      return false;
     }
-
-    //expose this to the workoutlog modules
-    window.WorkoutLog=WorkoutLog;
   });
+
+  // bind tab changes events
+  $('.nav-tabs a[data-toggle="tab"]').on("click", function (e) {
+    var target = $(e.target).attr("href"); //activated tab
+    if (target === '#log') {
+      WorkoutLog.log.setDefinitions();
+    }
+    if (target === '#history') {
+      WorkoutLog.log.setHistory();
+    }
+  });
+
+  $(document).on("keypress", function (e) {
+    if (e.which === 13) { //enter key
+      if ($("#signup-modal").is(':visible')) {
+        $("#signup").trigger("click");
+      }
+      if ($("#login-modal").is(":visible")) {
+        $("#login").trigger("click");
+      }
+    }
+  });
+
+  $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+    var target = $(e.target).attr("href"); // activated tab
+    if (target === "#log") {
+      WorkoutLog.log.setDefinitions();
+    }
+    if (target === "#update-log") {
+      WorkoutLog.log.setDefinitions();
+    }
+    if (target === "#history") {
+      WorkoutLog.log.setHistory();
+    }
+  });
+
+  $('#workout-start').on("click", function (e) {
+    if (target === '#workout-start') {
+      WorkoutLog.time.setWorkouts();
+    }
+  })
+
+  var token = window.localStorage.getItem("sessionToken");
+  if (token) {
+    WorkoutLog.setAuthHeader(token);
+  }
+
+  //expose this to the workoutlog modules
+  window.WorkoutLog = WorkoutLog;
+
+
+});
 
 
 
