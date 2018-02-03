@@ -9,19 +9,20 @@ $(function() {
           type: $("#def-logtype").val()
       };
       var postData = { definition: def };
+      console.log("WorkoutLog before post define.js",WorkoutLog)
       var define = $.ajax({
                  type: "POST",
                    url: WorkoutLog.API_BASE + "definition",
                    data: JSON.stringify(postData),
                    contentType: "application/json"
                   });
-      
                   define.done(function(data) {
+                    console.log("define userDefinition:", data.definition)
                     WorkoutLog.definition.userDefinitions.push(data.definition);
+                    console.log("define userDefinition: after", WorkoutLog.definition.userDefinitions)
                     $("#def-description").val("");
                     $("#def-logtype").val("");
                     $('a[href="#log"]').tab("show");
-
                   });
             },
       

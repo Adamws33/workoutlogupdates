@@ -4,10 +4,7 @@ $(function() {
 			workouts: [],
       
 			setDefinitions: function() {
-        var currentdate = new Date();
-        var starth = (currentdate.getHours() * 60);
-        var startm = currentdate.getMinutes();
-        console.log("start:",starth+startm)
+        console.log("WorkoutLog top of log.js",WorkoutLog)
         var defs = WorkoutLog.definition.userDefinitions;
         var len = defs.length;
         var opts;

@@ -4,6 +4,7 @@ $(function () {
     //private
     var API_BASE = "http://localhost:3000/api/";
     var userDefinitions = [];
+    var clock= [];
 
     var setAuthHeader = function (sessionToken) {
       window.localStorage.setItem("sessionToken", sessionToken);
@@ -24,6 +25,13 @@ $(function () {
   })
 
     (jQuery);
+  $('#workout-start').on("click", function (e) {
+    WorkoutLog.time.setWorkoutin()
+  })
+    // var target = $(e.target);
+    // if (target === '#workout-start') {
+    //   ;
+    // }
 
 
   //iife immedietly invoked function expression
@@ -35,7 +43,6 @@ $(function () {
       return false;
     }
   });
-
   // bind tab changes events
   $('.nav-tabs a[data-toggle="tab"]').on("click", function (e) {
     var target = $(e.target).attr("href"); //activated tab
@@ -45,8 +52,10 @@ $(function () {
     if (target === '#history') {
       WorkoutLog.log.setHistory();
     }
+    // if(target === '#workout-list'){
+    //   WorkoutLog.time.setWorkoutins();
+    // }
   });
-
   $(document).on("keypress", function (e) {
     if (e.which === 13) { //enter key
       if ($("#signup-modal").is(':visible')) {
@@ -57,7 +66,6 @@ $(function () {
       }
     }
   });
-
   $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
     var target = $(e.target).attr("href"); // activated tab
     if (target === "#log") {
@@ -70,13 +78,6 @@ $(function () {
       WorkoutLog.log.setHistory();
     }
   });
-
-  $('#workout-start').on("click", function (e) {
-    if (target === '#workout-start') {
-      WorkoutLog.time.setWorkouts();
-    }
-  })
-
   var token = window.localStorage.getItem("sessionToken");
   if (token) {
     WorkoutLog.setAuthHeader(token);

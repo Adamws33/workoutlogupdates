@@ -5,7 +5,6 @@ module.exports = function(sequelize, DataTypes) {
       description: DataTypes.STRING,
       logType: DataTypes.STRING, /* by time, reps, weight, ... */
       owner: DataTypes.INTEGER
-    },{
     });
   };
   
