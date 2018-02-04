@@ -10,7 +10,7 @@ $(function () {
         startMinute: currentdate.getMinutes()
       },
       setWorkoutin: function () {
-        console.log("Hey im a workout", WorkoutLog.time.clocks)
+        console.log("Hey im a workout in", WorkoutLog.time.clocks)
         var currentdate = new Date();
         var start = {
           startDay: `${currentdate.getDate()}/${(currentdate.getMonth() + 1)}/${currentdate.getFullYear()} `,
@@ -27,9 +27,37 @@ $(function () {
                       contentType: "application/json"
         });
         started.done(function (data) {
-          console.log("data.time:",data.workoutins)
+          console.log("data.time:",data.workoutins);
+          console.log("before:",WorkoutLog.time.clock);
+          WorkoutLog.time.clock.push(data.workoutins);
+          console.log("after:",WorkoutLog.time.clock);
+          $("#workouts-listItem").val("");
 
-          WorkoutLog.time.clocks.push(data.workoutins);
+          //to change to a new tab if needed
+          // $('a[href="#workouts"]').tab("show");
+        });
+      },
+      setWorkoutout: function () {
+        console.log("Hey im a workout out", WorkoutLog.time.clocks)
+        var currentdate = new Date();
+        var start = {
+          startDay: `${currentdate.getDate()}/${(currentdate.getMonth() + 1)}/${currentdate.getFullYear()} `,
+          startHour: (currentdate.getHours() * 60),
+          startMinute: currentdate.getMinutes()
+        }
+          var postData = {time: start}.time;
+          console.log("stop:", postData);
+          var started = $.ajax({
+                      type: "POST",
+                      url: WorkoutLog.API_BASE + "workoutins",
+                      data: JSON.stringify(postData),
+                      contentType: "application/json"
+        });
+        started.done(function (data) {
+          console.log("data.time out:",data.workoutins);
+          console.log("before out:",WorkoutLog.time.clock);
+          WorkoutLog.time.clock.push(data.workoutins);
+          console.log("after out:",WorkoutLog.time.clock);
           $("#workouts-listItem").val("");
 
           //to change to a new tab if needed

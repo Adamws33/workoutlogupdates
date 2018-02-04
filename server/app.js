@@ -14,12 +14,13 @@ var sequelize = require('./db.js')
 // User.sync();
 // //**********DANGER************DANGER************DANGER********
 // // **********DANGER************DANGER************DANGER********
-// // ****************** User.sync({force:true}); *******************
+// // ****************** sequelize.sync({ force: true}); *******************
 // // ***** DANGER THIS CODE WILL DROP ALL DATA STORED IN THE DB ****
 // // **********DANGER************DANGER************DANGER******** 
 // // **********DANGER************DANGER************DANGER********
 
 sequelize.sync();
+
 
 app.use(bodyParser.json());
 // saying to require the addition of headers from this file to have additional information sent along 

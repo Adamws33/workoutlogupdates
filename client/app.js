@@ -25,9 +25,12 @@ $(function () {
   })
 
     (jQuery);
-  $('#workout-start').on("click", function (e) {
-    WorkoutLog.time.setWorkoutin()
-  })
+    $('#workout-start').on("click", function (e) {
+      WorkoutLog.time.setWorkoutin()
+    }) 
+    $('#workout-stop').on("click", function (e) {
+      WorkoutLog.time.setWorkoutout()
+    })
     // var target = $(e.target);
     // if (target === '#workout-start') {
     //   ;

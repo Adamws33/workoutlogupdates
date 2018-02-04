@@ -14,6 +14,7 @@ var Definition = sequelize.import('../models/definition.js');
           description: req.body.definition.desc,
           logType: req.body.definition.type,
           owner: req.user.id
+          // console.log("req info define",req)
         }).then(
       function createSuccess(definition) {
         //send a response as json

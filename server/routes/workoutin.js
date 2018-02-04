@@ -1,15 +1,24 @@
 var router = require('express').Router();
 var sequelize = require('../db.js');
+var User = sequelize.import('../models/user.js');
 var Workoutins = sequelize.import('../models/workoutin.js');
+// var currentdate = new Date();
+// var clocks =  {
+        
+//   startDay: currentdate.getDate()+"/"+ (currentdate.getMonth() + 1)+"/"+currentdate.getFullYear(),
+//   startHour: (currentdate.getHours() * 60),
+//   startMinute: currentdate.getMinutes()
+// }
+// console.log (clocks.startDay)
 
   router.post('/', function(req, res) {
   //methods   //objects must match the model
   //  var request = req.body.clock
-  //  console.log(request)
+  console.log("*****************req is**************",req.body)
   Workoutins.create({ 
-      dayin: req.body.time.startDay,
-      hourin: req.body.time.startHour,
-      minin: req.body.time.startMinute,
+      dayin: req.body.startDay,
+      hourin: req.body.startHour,
+      minin: req.body.startMinute,
         }).then(
       function createSuccess(workoutins) {
         //send a response as json
@@ -18,10 +27,33 @@ var Workoutins = sequelize.import('../models/workoutin.js');
             });
       }, 
           function createError(err) {
-            res.send(500, err.message);
+            res.send(500).send(err.message);
           }
 
           );
+  
+  });
+  router.put('/', function(req, res) {
+    var dayin =  req.body.startDay;
+    var hourin = req.body.startHour;
+    var minin =  req.body.startMinute;
+    Log.update(
+      {
+        description: description,
+        result: result,
+        def: definition
+      },
+
+      {where: {id: data}}
+      ).then(
+        function updateSuccess(updatedLog) {
+          res.json(updatedLog);
+        },
+
+        function updateError(err){
+          res.send(500, err.message);
+        }
+      )
   });
   // router.get('/', function(req, res) {
   //   //user variable

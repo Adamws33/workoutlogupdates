@@ -69,8 +69,7 @@ router.get('/:id', function(req, res) {
       var data = req.body.log.id;
       var definition = req.body.log.def;
       console.log(req);
-      Log
-        .update(
+      Log.update(
         {
           description: description,
           result: result,
