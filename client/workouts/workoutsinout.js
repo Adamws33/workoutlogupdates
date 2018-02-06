@@ -99,7 +99,7 @@ $(function () {
         //   console.log("i",workOutIn[i])
         //   console.log("workoutin hour:", workOutIn[i].hourout )
           list += `<li id='workout-list' class="list-group-item text-center">On ${workOutIn[0].dayin} you worked out for 
-          ${((workOutIn[0].hourout)+(workOutIn[0].minout))-((workOutIn[0].minin)+(workOutIn[0].hourin))}
+          <strong>${((workOutIn[0].hourout)+(workOutIn[0].minout))-((workOutIn[0].minin)+(workOutIn[0].hourin))}</strong>
           minutes and got SWOLE! <div class='pull-right'>
             </div></li>`
         // }

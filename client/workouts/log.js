@@ -22,13 +22,13 @@ $(function() {
         var len = history.length;
         var lis = "";
         for (var i = 0; i < len; i++) {
-          lis += "<li class='list-group-item'>" + 
+          lis += "<li class='list-group-item historyList'>"+"Description: " + 
           // history[i].id + " - " + 
-          history[i].def + " - " + 
+          history[i].def + " - " +"Result: "+ 
           history[i].result + " " +
           // pass the log.id into the button's id attribute // watch your quotes!
           "<div class='pull-right'>" +
-            "<button id='" + history[i].id + "' class='update'><strong>U</strong></button>" +
+            "<button id='" + history[i].id + "' class='update'><strong>Update</strong></button>" +
             "<button id='" + history[i].id + "' class='remove'><strong>X</strong></button>" +
           "</div></li>";
         }
@@ -127,6 +127,7 @@ $(function() {
             WorkoutLog.log.workouts.splice(i, 1);
           }
         }
+        deleteLog.done(()=>alert("Deleted"))
         deleteLog.fail(function(){
           console.log("nope. you didn't delete it.");
         });

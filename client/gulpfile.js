@@ -1,6 +1,7 @@
 // var gulp = require('gulp');
 // var concat = require('gulp-concat');
 // var uglify = require('gulp-uglify');
+// var sass = require('gulp-sass');
 
 // var javascriptFiles = [
 //   './app.js',
@@ -14,6 +15,11 @@
 //     .pipe(concat('bundle.js')) // Squish all files together into one file
 //     .pipe(uglify())
 //     .pipe(gulp.dest("./dist")); // Save the bundle.js
+// });
+// gulp.task('sass', function() {
+//   return gulp.src('scss/main.scss')
+//     .pipe(sass())     
+//     .pipe(gulp.dest('css'))
 // });
 
 // // Default task when `gulp` runs: bundle, starts web server, then watches for changes

@@ -30,7 +30,8 @@ router.post('/', function(req, res) {
     );
 });
 router.get('/', function(req, res) {
-	var userid = req.user.id;
+  var userid = req.user.id;
+  console.log("******************",userid)
 	Log
 	.findAll({
 		where: { owner: userid }

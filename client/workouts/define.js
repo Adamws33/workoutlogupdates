@@ -37,6 +37,7 @@ $(function() {
    })
       .done(function(data) {
                 WorkoutLog.definition.userDefinitions = data;
+                console.log("********************",data)
                 
                 })
                .fail(function(err) {

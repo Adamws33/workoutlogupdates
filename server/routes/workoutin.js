@@ -54,15 +54,15 @@ var Workoutins = sequelize.import('../models/workoutin.js');
       )
   });
   router.get('/', function(req, res) {
-    //user variable
     var userid = req.user.id;
-    console.log("************************************************",req.user.id)
+    console.log("************************************************",userid)
     Workoutins.findAll({
       where: { id: userid }
     }).then(
       //success
       function findAllSuccess(data) {
         res.json(data);
+        console.log("************************* find all data",data)
       },
       //failure
       //error
