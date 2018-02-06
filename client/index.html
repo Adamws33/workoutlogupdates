@@ -101,7 +101,8 @@
       <!-- workouts tab -->
       <div class="tab-pane fade" id="workouts">
         <div class="tab-pane active" id="home">
-          <h2>Workout Log</h2>
+          <h2>Track your workout!</h2>
+          <h5>press start to begin the timer and stop when you are done.</h5>
           <div id="forWorkouts">
             <button id="workout-start" class="btn btn-primary">Start Workout</button>
             <button id="workout-stop" class="btn btn-primary">Stop Workout</button>
@@ -109,7 +110,7 @@
         </div>
 
         <div>
-          <h2>Workouts</h2>
+          <h2>Your current workout!</h2>
           <ul class="list-group" id="workouts-list">
           </ul>
         </div>
@@ -148,17 +149,19 @@
               </button>
               <h4 class="modal-title">Sign Up</h4>
             </div>
+            <form id="signinform">
             <div class="modal-body">
               <div class="alert alert-danger" role="alert" style="display:none;" id="su_error"></div>
-              <label for="su_username">Username:</label>
-              <input id="su_username" />
+              <label  for="su_username">Username:</label>
+              <input  id="su_username" />
               <label for="su_password">Password:</label>
-              <input type="password" id="su_password" />
+              <input  required minlength="5" title="5 characters minimum" type="password" id="su_password" />
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-              <button id="signup" type="button" class="btn btn-primary">Signup</button>
+              <button id="signup" type="submit" class="btn btn-primary">Signup</button>
             </div>
+          </form>
           </div>
         </div>
       </div>
@@ -168,7 +171,20 @@
 
   <script src="./bower_components/jquery/dist/jquery.min.js"></script>
   <script src="./bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-
+<!-- <script>
+  jQuery.validator.setDefaults({
+  debug: true,
+  success: "valid"
+});
+$( "#passwordform" ).validate({
+  rules: {
+    field: {
+      required: true,
+      minlength: 5
+    }
+  }
+});
+</script> -->
 
 
   <script src="app.js"></script>

@@ -30,7 +30,7 @@ var Definition = sequelize.import('../models/definition.js');
   });
   router.get('/', function(req, res) {
     //user variable
-    var userid = req.user.id;
+    var userid = req.param.id;
     Definition.findAll({
       where: { owner: userid }
     }).then(

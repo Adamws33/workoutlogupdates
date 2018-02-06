@@ -33,21 +33,19 @@ var Workoutins = sequelize.import('../models/workoutin.js');
           );
   
   });
-  router.put('/', function(req, res) {
-    var dayin =  req.body.startDay;
-    var hourin = req.body.startHour;
-    var minin =  req.body.startMinute;
-    Log.update(
+  router.patch('/:id', function(req, res) {
+    Workoutins.update(
       {
-        description: description,
-        result: result,
-        def: definition
+        dayout: req.body.endDay,
+        hourout: req.body.endHour,
+        minout: req.body.endMinute
       },
 
-      {where: {id: data}}
+      {where: {id: req.params.id}}
       ).then(
-        function updateSuccess(updatedLog) {
-          res.json(updatedLog);
+        function updateSuccess(workoutout) {
+          res.json(workoutout);
+          console.log("************************************************",workoutout,"*************************************************************")
         },
 
         function updateError(err){
@@ -55,23 +53,23 @@ var Workoutins = sequelize.import('../models/workoutin.js');
         }
       )
   });
-  // router.get('/', function(req, res) {
-  //   //user variable
-  //   var userid = req.user.id;
-  //   Workoutinss.findAll({
-  //     where: { owner: userid }
-  //   }).then(
-  //     //success
-  //     function findAllSuccess(data) {
-  //       console.log(data);
-  //       res.json(data);
-  //     },
-  //     //failure
-  //     //error
-  //     function findAllError(err) {
-  //       res.send(500, err.message);
-  //   });
-  // });
+  router.get('/', function(req, res) {
+    //user variable
+    var userid = req.user.id;
+    console.log("************************************************",req.user.id)
+    Workoutins.findAll({
+      where: { id: userid }
+    }).then(
+      //success
+      function findAllSuccess(data) {
+        res.json(data);
+      },
+      //failure
+      //error
+      function findAllError(err) {
+        res.send(500, err.message);
+    });
+  });
 
     module.exports = router;
     

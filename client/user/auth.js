@@ -83,7 +83,7 @@ $(function(){
   });
 
     $("#login").on("click", WorkoutLog.login);
-    $("#signup").on("click", WorkoutLog.signup);
+    $("#signinform").submit(WorkoutLog.signup);
     $("#loginout").on("click", WorkoutLog.loginout);
 
     if (window.localStorage.getItem("sessionToken")) {

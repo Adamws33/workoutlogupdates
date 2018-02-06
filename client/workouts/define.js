@@ -17,7 +17,7 @@ $(function() {
                    contentType: "application/json"
                   });
                   define.done(function(data) {
-                    console.log("define userDefinition:", data.definition)
+                    console.log("define userDefinition:", data)
                     WorkoutLog.definition.userDefinitions.push(data.definition);
                     console.log("define userDefinition: after", WorkoutLog.definition.userDefinitions)
                     $("#def-description").val("");

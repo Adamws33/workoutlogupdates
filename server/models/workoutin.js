@@ -5,8 +5,9 @@ module.exports = function(sequelize, DataTypes) {
       dayin: DataTypes.STRING,
       hourin: DataTypes.INTEGER,
       minin: DataTypes.INTEGER,
+      dayout: DataTypes.STRING,
       hourout: DataTypes.INTEGER,
-      minout: DataTypes.INTEGER,
+      minout: DataTypes.INTEGER
     });
   };
   
